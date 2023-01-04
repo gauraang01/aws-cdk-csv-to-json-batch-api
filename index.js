@@ -8,6 +8,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3030;
 
+console.log(process.env.ENDPOINT + " " +  process.env.USER + " "+ process.env.PASSWORD + " " + process.env.DATABASE + " " + process.env.MYSQL_PORT);
+
 const connection = mysql.createConnection({
     host: process.env.ENDPOINT,
     user: process.env.USER,
