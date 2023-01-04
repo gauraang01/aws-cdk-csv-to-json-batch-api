@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mysql = require('mysql');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -7,19 +8,12 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3030;
 
-// const connection = mysql.createConnection({
-//   host: 'your-rds-mysql-instance-endpoint',
-//   user: 'your-username',
-//   password: 'your-password',
-//   database: 'your-database'
-// });
-
 const connection = mysql.createConnection({
     host: process.env.ENDPOINT,
     user: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
-    port: process.env.PORT
+    port: process.env.MYSQL_PORT
 });
 
 connection.connect((err)=>{
@@ -52,7 +46,7 @@ app.post('/api/cleartable', (req,res) => {
     connection.query(sql,(err, result)=>{
         if(err) throw err;
         console.log("Table cleared");
-        res.send(result);
+        res.send("Table cleared");
     })
 })
 
