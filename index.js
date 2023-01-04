@@ -54,7 +54,7 @@ app.post('/api/cleartable', (req,res) => {
 
 app.post('/api/data', (req, res) => {
     const sql = 'INSERT INTO users SET ?';
-    const csvdata = req.body.csv_data;
+    const csvdata = req.body;
 
     csvdata.forEach(data => {
         connection.query(sql, data, (error, results) => {
