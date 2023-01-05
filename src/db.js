@@ -50,10 +50,15 @@ async function clearTable(tableName){
     await query(sql);
 }
 
+async function deleteTable(tableName){
+  const sql = `DROP TABLE ${tableName}`;
+  await query(sql);
+}
 
 module.exports = {
     query,
     createTable,
     showTable,
     clearTable,
+    deleteTable,
   };

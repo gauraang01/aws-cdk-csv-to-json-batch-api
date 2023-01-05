@@ -1,4 +1,4 @@
-const {addData, showUsersTable, clearUsersTable} = require('../../db/models/users');
+const {addData, showUsersTable, clearUsersTable, deleteUsersTable, createUsersTable} = require('../../db/models/users');
 const {users, addUser} = require('../../credentials');
 
 const checkCredentials = require('../middleware/basic-auth');
@@ -18,6 +18,7 @@ router.post('/register', (req, res) => {
         res.send("Invalid input")
     }else{
         addUser(username, password);
+        console.log("Successfully registered");
         res.send('Successfully registered');
     }
 })
@@ -54,5 +55,28 @@ router.post('/data', checkCredentials, async (req,res) => {
         res.status(500).send({ error: 'An error occurred while adding data' });
     }
 })
+
+router.post('/create', checkCredentials, async (req, res) => {
+    try{
+        await createUsersTable();
+        console.log("Table created successfully");
+        res.send("Table created successfully");
+    }catch(error){
+        console.log(error);
+        res.status(500).send({ error: 'An error occurred while creating the table'});
+    }
+})
+
+router.post('/delete', checkCredentials, async (req, res) => {
+    try{
+        await deleteUsersTable();
+        console.log("Table deleted successfully");
+        res.send("Table deted successfully");
+    }catch(error){
+        console.log(error);
+        res.status(500).send({ error: 'An error occurred while deleting the table'});
+    }
+})
+
 
 module.exports = router;

@@ -1,13 +1,12 @@
-const {query, createTable, showTable, clearTable} = require('../../db');
+const {query, createTable, showTable, clearTable, deleteTable} = require('../../db');
 
-async function createUserTable(){
+async function createUsersTable(){
     const schema = `
         id int,
         name varchar(255), 
         surname varchar(255), 
-        dob date, 
+        dob DATE, 
         gender varchar(255)
-        )
     `;
     await createTable('users', schema);
 }
@@ -22,15 +21,21 @@ async function clearUsersTable(){
 }
 
 async function addData(json){
-    const sql = `INSERT INTO users SET ?`;
-    json.forEach(async data => {
-        await query(sql, data);
-    });
+    const sql = "INSERT INTO users (`id`, `name`, `surname`, dob, `gender`) VALUES (?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?)";
+    for (const data of json) {
+        let {id, name, surname, dob, gender} = data;
+        const params = [id, name, surname, dob, gender];
+        await query(sql, params);
+      }
 }
 
+async function deleteUsersTable(){
+    await deleteTable('users');
+}
 module.exports = {
-    createUserTable,
+    createUsersTable,
     addData,
     showUsersTable,
     clearUsersTable,
+    deleteUsersTable,
 }
