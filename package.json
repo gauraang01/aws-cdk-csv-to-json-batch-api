@@ -4,13 +4,14 @@
   "description": "Api to prcoess json and store it on RDS",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
   "author": "Gauraang",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3"
   }
 }
