@@ -6,13 +6,18 @@ const checkCredentials = require('../middleware/basic-auth');
 const express = require('express');
 
 const router = express.Router();
-router.use(express.json());
+
+
 
 router.get('/', (req, res) => {
     res.status(200).send("You have reached the home page");
 })
 
-router.post('/register', (req, res) => {
+router.get('/register', (req, res) => {
+    res.render('register', {});
+});
+
+router.post('/register', async(req, res) => {
     const { username, password } = req.body;
     if(!username || !password){
         res.send("Invalid input")
