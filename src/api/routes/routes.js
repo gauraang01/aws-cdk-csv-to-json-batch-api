@@ -1,7 +1,8 @@
 const {addData, showUsersTable, clearUsersTable} = require('../../db/models/users');
+const checkCredentials = require('../middleware/authentication');
 
 const express = require('express');
-const { json } = require('express');
+
 const router = express.Router();
 router.use(express.json());
 
@@ -19,7 +20,7 @@ router.get('/show', async (req,res) => {
     }
 })
 
-router.post('/clear', async (req, res) => {
+router.post('/clear', checkCredentials, async (req, res) => {
     try{
         await clearUsersTable();
         console.log("Table cleared successfully");
@@ -30,7 +31,7 @@ router.post('/clear', async (req, res) => {
 })
 
 
-router.post('/data', async (req,res) => {
+router.post('/data', checkCredentials, async (req,res) => {
     const json = req.body;
     try{
         await addData(json);
