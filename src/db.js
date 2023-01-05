@@ -1,7 +1,6 @@
 require('dotenv').config()
 const mysql = require('mysql2/promise');
 
-console.log(process.env.ENDPOINT);
 const pool = mysql.createPool({
   host: process.env.ENDPOINT,
   user: process.env.USER,
