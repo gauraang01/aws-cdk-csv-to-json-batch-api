@@ -1,5 +1,7 @@
 const {addData, showUsersTable, clearUsersTable} = require('../../db/models/users');
-const checkCredentials = require('../middleware/authentication');
+const {users, addUser} = require('../../credentials');
+
+const checkCredentials = require('../middleware/basic-auth');
 
 const express = require('express');
 
@@ -8,6 +10,16 @@ router.use(express.json());
 
 router.get('/', (req, res) => {
     res.status(200).send("You have reached the home page");
+})
+
+router.post('/register', (req, res) => {
+    const { username, password } = req.body;
+    if(!username || !password){
+        res.send("Invalid input")
+    }else{
+        addUser(username, password);
+        res.send('Successfully registered');
+    }
 })
 
 router.get('/show', async (req,res) => {
