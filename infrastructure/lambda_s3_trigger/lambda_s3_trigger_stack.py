@@ -27,8 +27,11 @@ class LambdaS3TriggerStack(Stack):
         s3.grant_read(function)
 
         # create s3 notification for lambda function
-        notification = aws_s3_notifications.LambdaDestination(function)
-
-        
         # assign notification for the s3 event type (ex: OBJECT_CREATED)
-        s3.add_event_notification(_s3.EventType.OBJECT_CREATED, notification)
+        s3.add_event_notification(
+            _s3.EventType.OBJECT_CREATED, 
+            aws_s3_notifications.LambdaDestination(function), 
+            _s3.NotificationKeyFilter(suffix=".csv")
+        )
+
+       
