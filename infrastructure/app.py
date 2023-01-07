@@ -3,11 +3,11 @@ import os
 
 import aws_cdk as cdk
 
-from lambda_s3_trigger.lambda_s3_trigger_stack import LambdaS3TriggerStack
+from lambda_s3_trigger.lambda_s3_trigger_stack import LambdaS3TriggerRDSStack
 
 
 app = cdk.App()
-LambdaS3TriggerStack(app, "LambdaS3TriggerStack",
+LambdaS3TriggerRDSStack(app, "LambdaS3TriggerRDSStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
@@ -15,7 +15,7 @@ LambdaS3TriggerStack(app, "LambdaS3TriggerStack",
     # Uncomment the next line to specialize this stack for the AWS Account
     # and Region that are implied by the current CLI configuration.
 
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
+    env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
 
     # Uncomment the next line if you know exactly what Account and Region you
     # want to deploy the stack to. */
