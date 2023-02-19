@@ -16,31 +16,30 @@ Using AWS CDK, this project is easy to deploy, customize, and scale to meet the 
 # Installation
   1. Clone the repository and navigate to the root directory of the project
   2. Install the dependencies for the AWS CDK and the Node.js application
-    ```bash
-    # Install AWS CDK dependencies
-    cd infrastructure
-    npm install
+  ```bash
+  # Install AWS CDK dependencies
+  cd infrastructure
+  npm install
 
-    # Install Node.js application dependencies
-    cd ../store-json-rds
-    npm install
-    ```
+  # Install Node.js application dependencies
+  cd ../store-json-rds
+  npm install
+  ```
 
     
   3. Deploy the AWS resources using the AWS CDK:
-    ```Bash
-    # From the infrastructure directory
-      cdk deploy
-    ```
+  ```bash
+  # From the infrastructure directory
+    cdk deploy
+  ```
     
   4. Ensure that you have stup aws region, and other credentials
   5. Start the Node.js application:
-    ```Bash
-    # From the store-json-rds directory
-      npm start
-    ```
+  ```Bash
+  # From the store-json-rds directory
+    npm start
+  ```
 This will start the Node.js application, which listens for new CSV files uploaded to the S3 bucket. When a new file is detected, the application will process the file and send the data to the API Gateway, which will store the data in the RDS instance.
-
 
 # Usage
 Infrastructure folder contains aws-cdk code to build IAM, rds database, s3, lamda function triggered by the csv upload to s3
