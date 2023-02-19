@@ -42,8 +42,8 @@ Using AWS CDK, this project is easy to deploy, customize, and scale to meet the 
 This will start the Node.js application, which listens for new CSV files uploaded to the S3 bucket. When a new file is detected, the application will process the file and send the data to the API Gateway, which will store the data in the RDS instance.
 
 # Usage
-Infrastructure folder contains aws-cdk code to build IAM, rds database, s3, lamda function triggered by the csv upload to s3
-
+* To signup for the API vsit the <url>/register page
+* Modify the lambda-handler.py file within the  
 ### 
 WIthin the lambda folder it contains code to create a lambda function that will 
 # API code
