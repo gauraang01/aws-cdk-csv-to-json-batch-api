@@ -14,8 +14,8 @@ Using AWS CDK, this project is easy to deploy, customize, and scale to meet the 
 
 
 # Installation
-  * Clone the repository and navigate to the root directory of the project:
-  * Install the dependencies for the AWS CDK and the Node.js application:
+  1. Clone the repository and navigate to the root directory of the project:
+  2. Install the dependencies for the AWS CDK and the Node.js application:
     ```
     # Install AWS CDK dependencies
       cd infrastructure
@@ -26,14 +26,14 @@ Using AWS CDK, this project is easy to deploy, customize, and scale to meet the 
       npm install
     ```
     
-  * Deploy the AWS resources using the AWS CDK:
+  3. Deploy the AWS resources using the AWS CDK:
     ```
     # From the infrastructure directory
       cdk deploy
     ```
     
-  * Ensure that you have stup aws region, and other credentials
-  * Start the Node.js application:
+  4. Ensure that you have stup aws region, and other credentials
+  5. Start the Node.js application:
     ```
     # From the store-json-rds directory
       npm start
